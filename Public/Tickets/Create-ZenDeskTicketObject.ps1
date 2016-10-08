@@ -27,7 +27,7 @@ function Create-ZenDeskTicketObject
         [Parameter(Mandatory=$true,ParameterSetName='Attachment')]
         $Comment,
         [PSTypeName('PoshZD.Attachment')]
-        [Parameter(Mandatory=$true,ParameterSetName='Attachment'))]
+        [Parameter(Mandatory=$true,ParameterSetName='Attachment')]
         $Attachment,
 
         $RequesterID,
@@ -61,7 +61,7 @@ function Create-ZenDeskTicketObject
         {
             $Body.comment = @{
                 body = $Comment
-                uploads = $Attachment 
+                uploads = $Attachment.token
             }
         }
 

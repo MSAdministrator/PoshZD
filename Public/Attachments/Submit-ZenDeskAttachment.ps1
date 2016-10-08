@@ -11,40 +11,51 @@
 function Submit-ZenDeskAttachment
 {
     [CmdletBinding()]
-    [Alias()]
-    [OutputType([int])]
     Param
     (
         # Param1 help description
         [Parameter(Mandatory=$true,
-                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
                    Position=0)]
-        $Attachment
+        [string[]]$Attachment
     )
 
     Begin
     {
-        $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$Attachment&token=$Token"
-            Method = 'Post'
-            Headers = $Headers
-            ContentType = 'application/binary'
-            InFile = $Attachment
-        }
+        $Result = @{}
     }
     Process
     {
-        try
+        foreach ($item in $Attachment)
         {
-            $Result = Invoke-RestMethod @params
-        }
-        catch
-        {
-            Write-Warning -Message "Error uploading attachment to ZenDesk: $($Error | select -Property *)"
+            $params = @{
+                Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $item)"
+                Method = 'Post'
+                Headers = $Headers
+                ContentType = 'application/binary'
+                InFile = $item
+            }
+           
+            try
+            {
+                $AttObject = Invoke-RestMethod @params
+
+                $Result.Token = $AttObject.upload.token
+                $Result.Expires = $AttObject.upload.expires_at
+                $Result.URL = $AttObject.upload.attachments.url
+                $Result.ID = $AttObject.upload.attachments.id
+                $Result.FileName = $AttObject.upload.attachments.file_name
+                $Result.ContentType = $AttObject.upload.attachments.content_type
+                $Result.Size = $AttObject.upload.attachments.size
+            }
+            catch
+            {
+                Write-Warning -Message "Error uploading attachment to ZenDesk: $($Error | select -Property *)"
+            }
         }
     }
     End
     {
-        return $Result
+        Add-ObjectDetail -InputObject $Result -TypeName PoshZD.Attachment -DefaultProperties Token,FileName,Expires
     }
 }
