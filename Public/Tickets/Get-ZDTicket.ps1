@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Get-ZenDeskTicket
+function Get-ZDTicket
 {
     [CmdletBinding()]
     [Alias()]

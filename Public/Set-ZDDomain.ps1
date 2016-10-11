@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Set-ZendeskHeader
+function Set-ZDDomain
 {
     [CmdletBinding(SupportsShouldProcess,ConfirmImpact="High")]
     [OutputType('System.Management.Automation.PSVariable')]
@@ -17,11 +17,7 @@ function Set-ZendeskHeader
         # Param1 help description
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true)]
-        $Email,
-
-        # Param2 help description
-        [Parameter(Mandatory=$true)]
-        $Token
+        $Domain
     )
 
     Begin
@@ -32,7 +28,7 @@ function Set-ZendeskHeader
     Process
     {
        
-        Set-Variable -Name Headers -Value @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($Email)/token:$($Token)"));} -Scope Global
+        Set-Variable -Name Domain -Value $Domain -Scope Global
 
     }
     End

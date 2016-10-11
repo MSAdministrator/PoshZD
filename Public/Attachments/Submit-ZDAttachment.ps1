@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Submit-ZenDeskAttachment
+function Submit-ZDAttachment
 {
     [CmdletBinding()]
     Param

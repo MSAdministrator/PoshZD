@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function New-ZenDeskTicket
+function Update-ZDTicket
 {
     [CmdletBinding()]
     [Alias()]
@@ -20,7 +20,11 @@ function New-ZenDeskTicket
         [Parameter(Mandatory=$true,
                    ValueFromPipeline=$true
                    )]
-        $TicketObject
+        $TicketObject,
+
+        # Param2 help description
+        [Parameter(Mandatory=$true)]
+        [int]$TicketNumber
     )
 
     Begin
@@ -30,8 +34,8 @@ function New-ZenDeskTicket
     Process
     {
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets.json"
-            Method = 'Post'
+            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketNumber.json"
+            Method = 'Put'
             Body = $($TicketObject | ConvertTo-Json)
             Headers = $Headers
             ContentType = 'application/json'

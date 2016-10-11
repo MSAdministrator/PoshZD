@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Create-ZenDeskTicketObject
+function Create-ZDTicketObject
 {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]

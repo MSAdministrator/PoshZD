@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Get-TicketFields
+function Get-ZDTicketFields
 {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]

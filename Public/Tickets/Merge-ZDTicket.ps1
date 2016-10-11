@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Update-ZenDeskTicket
+function Merge-ZDTicket
 {
     [CmdletBinding()]
     [Alias()]
@@ -16,26 +16,33 @@ function Update-ZenDeskTicket
     Param
     (
         # Param1 help description
-        [PSTypeName('PoshZD.Ticket')]
         [Parameter(Mandatory=$true,
-                   ValueFromPipeline=$true
-                   )]
-        $TicketObject,
+                   ValueFromPipeline=$true)]
+        [int]$SourceTicket,
 
         # Param2 help description
-        [Parameter(Mandatory=$true)]
-        [int]$TicketNumber
+        [int[]]
+        $TargetTicket,
+
+        $TargetComment,
+        $SourceComment
     )
 
     Begin
     {
-        
+        $props = @{
+            ids = $TargetTicket
+            target_comment = $TargetComment
+            source_comment = $SourceComment
+        }
+
+        $TicketObject = New-Object -TypeName PSCustomObject -Property $props
     }
     Process
     {
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketNumber.json"
-            Method = 'Put'
+            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$SourceTicket/merge.json"
+            Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
             Headers = $Headers
             ContentType = 'application/json'
