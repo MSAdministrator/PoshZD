@@ -13,7 +13,7 @@ function Create-ZDUserObject
     [CmdletBinding()]
     Param
     (
-
+        [Parameter(Mandatory=$true)]
         [string]$Email,
 
         [string]$Comment,

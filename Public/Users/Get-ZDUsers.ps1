@@ -85,7 +85,6 @@ function Get-ZDUsers
         {
             throw 'Error searching for users'
         }
-
     }
     End
     {
