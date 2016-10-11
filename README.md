@@ -8,19 +8,19 @@ Pull requests and other contributions would be welcome!
 
 # Instructions
 
-```powershell
-# One time setup
+
+### One time setup
     # Download the repository
     # Unblock the zip
     # Extract the PoshZD folder to a module path (e.g. $env:USERPROFILE\Documents\WindowsPowerShell\Modules\)
 
-# Import the module.
+### Import the module.
     Import-Module PoshZD
 
-# Get commands in the module
+### Get commands in the module
     Get-Command -Module PSSlack
 
-### Prerequisites
+# Prerequisites
 
 * PowerShell 3 or later
 * A valid token from ZenDesk API or your User Name and Password (Coming Soon)
@@ -32,7 +32,7 @@ Pull requests and other contributions would be welcome!
 ```powershell
 # This example shows how to create a ZenDesk Ticket Object that can be used to create a ZenDesk ticket
 
-```powershell
+
 #Create your ZenDesk Headers and Domain variables
 Set-ZDHeader -Email 'first.last@domain.com' -Token 'zendesktokengoeshere'
 Set-ZDDomain -Domain 'domain' #example of domain is https//:{domain}.zendesk.com
@@ -43,18 +43,18 @@ $ZDObject = Create-ZDTicketObject -String 'New Ticket for customer' `
                                   -Type incident `
                                   -Priority high `
                                   -Status new
-```powershell
-# create new ZenDesk ticket
+```
+### Create new ZenDesk ticket
 ```powershell
 $ZDObject | New-ZDTicket
-```powershell
-# Update ZenDesk ticket
+```
+### Update ZenDesk ticket
 ```powershell
 $ZDObject | Update-ZDTicket -TicketNumber 123456789
 or
 $ZDTicket = Get-ZDTicket -TicketId 123456789
 Update-ZDTicket -TicketId $ZDTicket -TicketObject $ZDObject
-```powershell
-# This README is a work in progress.  There is similar functionality across all functions which include 
-# Tickets, Users, Organizations, and Attachments
-# More functionality will continue to be added.
+```
+#### This README is a work in progress.  There is similar functionality across all functions which include 
+#### Tickets, Users, Organizations, and Attachments
+#### More functionality will continue to be added.
