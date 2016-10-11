@@ -32,6 +32,7 @@ Pull requests and other contributions would be welcome!
 ```powershell
 # This example shows how to create a ZenDesk Ticket Object that can be used to create a ZenDesk ticket
 
+```powershell
 #Create your ZenDesk Headers and Domain variables
 Set-ZDHeader -Email 'first.last@domain.com' -Token 'zendesktokengoeshere'
 Set-ZDDomain -Domain 'domain' #example of domain is https//:{domain}.zendesk.com
@@ -42,18 +43,18 @@ $ZDObject = Create-ZDTicketObject -String 'New Ticket for customer' `
                                   -Type incident `
                                   -Priority high `
                                   -Status new
-
+```powershell
 # create new ZenDesk ticket
-```
+```powershell
 $ZDObject | New-ZDTicket
-
+```powershell
 # Update ZenDesk ticket
-```
+```powershell
 $ZDObject | Update-ZDTicket -TicketNumber 123456789
 or
 $ZDTicket = Get-ZDTicket -TicketId 123456789
 Update-ZDTicket -TicketId $ZDTicket -TicketObject $ZDObject
-
+```powershell
 # This README is a work in progress.  There is similar functionality across all functions which include 
 # Tickets, Users, Organizations, and Attachments
 # More functionality will continue to be added.
