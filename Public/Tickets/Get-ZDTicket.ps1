@@ -19,13 +19,13 @@ function Get-ZDTicket
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        $Ticket
+        $TicketId
     )
 
     Begin
     {
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$Ticket.json"
+            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId.json"
             Method = 'Get'
             Headers = $Headers
         }
