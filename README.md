@@ -1,4 +1,4 @@
-PSSlack
+PoshZD
 =============
 
 A PowerShell Module to interact with the ZenDesk ticketing system.
@@ -18,7 +18,7 @@ Pull requests and other contributions would be welcome!
     Import-Module PoshZD
 
 ### Get commands in the module
-    Get-Command -Module PSSlack
+    Get-Command -Module PoshZD
 
 # Prerequisites
 
