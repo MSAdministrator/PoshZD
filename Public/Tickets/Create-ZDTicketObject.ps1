@@ -57,7 +57,7 @@ function Create-ZDTicketObject
 
         $JSONObject.ticket = ''
 
-        if ($PSBoundParameters.ParameterSetName('Attachment'))
+        if ($Attachment)
         {
             $Body.comment = @{
                 body = $Comment
