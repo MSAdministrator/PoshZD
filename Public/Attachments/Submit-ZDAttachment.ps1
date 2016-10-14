@@ -1,12 +1,10 @@
-﻿<#
+<#
 .Synopsis
-   Short description
+   Sends an attachment to ZenDesk which generates a token
 .DESCRIPTION
-   Long description
+   Sends an attachment to ZenDesk which generates a token.  This function retains the token so you can easily add an attachment to a ZD Ticket Object
 .EXAMPLE
-   Example of how to use this cmdlet
-.EXAMPLE
-   Another example of how to use this cmdlet
+   $attachmentobject = Submit-ZDAttachment -Attachment "C:\Path\To\Attachment.doc"
 #>
 function Submit-ZDAttachment
 {
@@ -28,8 +26,9 @@ function Submit-ZDAttachment
     {
         foreach ($item in $Attachment)
         {
+            $tempobj = @{}
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $item)"
+                Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $item)&token=$firsttoken"
                 Method = 'Post'
                 Headers = $Headers
                 ContentType = 'application/binary'
@@ -40,19 +39,22 @@ function Submit-ZDAttachment
             {
                 $AttObject = Invoke-RestMethod @params
 
-                $Result.Token = $AttObject.upload.token
-                $Result.Expires = $AttObject.upload.expires_at
-                $Result.URL = $AttObject.upload.attachments.url
-                $Result.ID = $AttObject.upload.attachments.id
-                $Result.FileName = $AttObject.upload.attachments.file_name
-                $Result.ContentType = $AttObject.upload.attachments.content_type
-                $Result.Size = $AttObject.upload.attachments.size
+                $tempobj.Token = $AttObject.upload.token
+                $tempobj.Expires = $AttObject.upload.expires_at
+                $tempobj.URL = $AttObject.upload.attachments.url
+                $tempobj.ID = $AttObject.upload.attachments.id
+                $tempobj.FileName = $AttObject.upload.attachments.file_name
+                $tempobj.ContentType = $AttObject.upload.attachments.content_type
+                $tempobj.Size = $AttObject.upload.attachments.size
             }
             catch
             {
                 Write-Warning -Message "Error uploading attachment to ZenDesk: $($Error | select -Property *)"
             }
+
+            $Result += $tempobj
         }
+        $firsttoken = $tempobj.Token
     }
     End
     {
