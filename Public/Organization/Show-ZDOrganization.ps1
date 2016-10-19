@@ -17,7 +17,7 @@ function Show-ZDOrganization
         [Parameter(Mandatory=$true,
                    ValueFromPipeline=$true,
                    ParameterSetName='ID')]
-        [int]$OrganizationID
+        [long]$OrganizationID
     )
 
     Begin
