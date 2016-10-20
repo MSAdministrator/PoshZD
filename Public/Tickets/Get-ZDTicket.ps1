@@ -19,11 +19,15 @@ function Get-ZDTicket
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        $TicketId
+        $TicketId,
+
+        [switch]$GetTags
     )
 
     Begin
     {
+        $ReturnObject = @{}
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId.json"
             Method = 'Get'
@@ -32,10 +36,21 @@ function Get-ZDTicket
     }
     Process
     {
-        $result = Invoke-RestMethod @params
+        $ReturnObject.ticket = (Invoke-RestMethod @params).ticket
+        
+        if ($GetTags)
+        {
+            $params = @{
+                Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/tags.json"
+                Method = 'Get'
+                Headers = $Headers
+            }
+
+            $ReturnObject.tags = (Invoke-RestMethod @params).tags
+        }
     }
     End
     {
-        return $result
+        return $ReturnObject
     }
 }
