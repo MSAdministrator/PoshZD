@@ -54,7 +54,7 @@ function Submit-ZDAttachment
 
             $Result += $tempobj
         }
-        $firsttoken = $tempobj.Token[0]
+        $firsttoken = $tempobj.Token
     }
     End
     {
