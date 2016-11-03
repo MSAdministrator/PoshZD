@@ -1,0 +1,13 @@
+﻿Revert "Added new Search function for searching tickets by tags"
+
+This reverts commit 05571e580c21b3826336d2c10384432702b57522.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	deleted:    Public/Search/Search-ZDTicketsByTag.ps1
+#
+
