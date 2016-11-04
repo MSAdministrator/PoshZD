@@ -52,5 +52,6 @@ function Set-ZDTicketCaseStatus
     }
     End
     {
+        return $restresponse
     }
 }
