@@ -29,7 +29,6 @@ function Create-ZDTicketObject
         [Parameter(Mandatory=$false,ParameterSetName='Attachment')]
         [ValidateSet('true','false')]
         $IsPublic = 'true',
-        [PSTypeName('PoshZD.Attachment')]
         [Parameter(Mandatory=$false,ParameterSetName='Attachment')]
         $Attachment,
 
@@ -64,12 +63,11 @@ function Create-ZDTicketObject
         {
             $Body.comment = @{
                 body = $Comment
-                uploads = $Attachment.token
+                uploads = $Attachment.token[0]
                 public = $IsPublic
             }
         }
-
-        if ($Comment)
+        elseif ($Comment)
         {
             $Body.comment = @{
                 body = $Comment

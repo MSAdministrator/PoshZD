@@ -46,17 +46,17 @@ function Submit-ZDAttachment
 
                     $AttObject = Invoke-RestMethod @params
 
-                #    $tempProp = @{
-                        $TempObject.Token = $AttObject.upload.token
-                        $TempObject.Expires = $AttObject.upload.expires_at
-                        $TempObject.URL = $AttObject.upload.attachments.url
-                        $TempObject.ID = $AttObject.upload.attachments.id
-                        $TempObject.FileName = $AttObject.upload.attachments.file_name
-                        $TempObject.ContentType = $AttObject.upload.attachments.content_type
-                        $TempObject.Size = $AttObject.upload.attachments.size
-                 #   }
+                    $tempProp = @{
+                        Token = $AttObject.upload.token
+                        Expires = $AttObject.upload.expires_at
+                        URL = $AttObject.upload.attachments.url
+                        ID = $AttObject.upload.attachments.id
+                        FileName = $AttObject.upload.attachments.file_name
+                        ContentType = $AttObject.upload.attachments.content_type
+                        Size = $AttObject.upload.attachments.size
+                    }
 
-                  #  $TempObject = New-Object -TypeName PSCustomObject -Property $tempProp
+                    $TempObject = New-Object -TypeName PSCustomObject -Property $tempProp
                 }
                 catch
                 {
@@ -75,7 +75,7 @@ function Submit-ZDAttachment
             if ($i -gt 0)
             {
 
-                Write-Host "firsttoken[$i] = $firsttoken"
+                Write-Debug "firsttoken[$i] = $firsttoken"
 
                 $tempobj = @{}
 
@@ -94,17 +94,17 @@ function Submit-ZDAttachment
                     $AttObject = @()
                     $AttObject = Invoke-RestMethod @params
 
-                    #$tempProp = @{
-                        $TempObject.Token = $AttObject.upload.token
-                        $TempObject.Expires = $AttObject.upload.expires_at
-                        $TempObject.URL = $AttObject.upload.attachments.url
-                        $TempObject.ID = $AttObject.upload.attachments.id
-                        $TempObject.FileName = $AttObject.upload.attachments.file_name
-                        $TempObject.ContentType = $AttObject.upload.attachments.content_type
-                        $TempObject.Size = $AttObject.upload.attachments.size
-                    #}
+                    $tempProp = @{
+                        Token = $AttObject.upload.token
+                        Expires = $AttObject.upload.expires_at
+                        URL = $AttObject.upload.attachments.url
+                        ID = $AttObject.upload.attachments.id
+                        FileName = $AttObject.upload.attachments.file_name
+                        ContentType = $AttObject.upload.attachments.content_type
+                        Size = $AttObject.upload.attachments.size
+                    }
 
-                    #$TempObject = New-Object -TypeName PSCustomObject -Property $tempProp
+                    $TempObject = New-Object -TypeName PSCustomObject -Property $tempProp
                 }
                 catch
                 {
@@ -120,7 +120,6 @@ function Submit-ZDAttachment
     }
     End
     {
-        
-        Add-ObjectDetail -InputObject $Result -TypeName PoshZD.Attachment -DefaultProperties Token,FileName,Expires
+        return $Result 
     }
 }
