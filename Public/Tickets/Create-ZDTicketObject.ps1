@@ -45,7 +45,9 @@ function Create-ZDTicketObject
         [ValidateSet('new','open','pending','hold','solved','closed')]
         $Status,
         [array]$Tags,
-        $CustomFields,
+        
+        $CustomFieldID,
+        $CustomFieldValue,
         [switch]$SafeUpdate
     )
 
@@ -63,7 +65,7 @@ function Create-ZDTicketObject
         {
             $Body.comment = @{
                 body = $Comment
-                uploads = $Attachment.token[0]
+                uploads = $Attachment
                 public = $IsPublic
             }
         }
@@ -73,6 +75,20 @@ function Create-ZDTicketObject
                 body = $Comment
                 public = $IsPublic
             }
+        }
+
+        if ($CustomFieldID)
+        {
+            $body.custom_fields = @(
+                @{
+                    id = $CustomFieldID
+                    value = $CustomFieldValue
+                },
+                @{ 
+                    id = 31980718
+                    value = 'on_hold'
+                }
+            )
         }
 
         switch ($PSBoundParameters.Keys)
@@ -90,7 +106,6 @@ function Create-ZDTicketObject
             'Priority'                 { $Body.priority                 = $Priority                }
             'Status'                   { $Body.status                   = $Status                  }
             'Tags'                     { $Body.tags                     = $Tags                    }
-            'CustomFields'             { $Body.custom_fields            = $CustomFields            }
             'SafeUpdate'               { $Body.safe_update              = $SafeUpdate              }
         }
 

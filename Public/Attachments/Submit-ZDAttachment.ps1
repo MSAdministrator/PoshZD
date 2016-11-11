@@ -25,6 +25,9 @@ function Submit-ZDAttachment
     }
     Process
     {
+        Write-Debug 'Attachment count before submitting attachment to ZenDesk'
+        Write-Debug "Attachment.Count = $($Attachment.count)"
+
         for ($i = 0; $i -lt $Attachment.Count; $i++)
         {
             $tempobj = @{}
