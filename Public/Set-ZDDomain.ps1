@@ -27,11 +27,22 @@ function Set-ZDDomain
     }
     Process
     {
-       
-        Set-Variable -Name Domain -Value $Domain -Scope Global
-
+        if (Test-Path Variable:$Domain)
+        {  
+            Set-Variable -Name Domain -Value $Domain -Scope Global
+        }
+        <#else
+        {
+            $Response = [System.Windows.Forms.MessageBox]::Show("A Domain variable already exists.  Would you like to overwrite this variable?" , "Status" , 4)
+            
+            if ($Response -eq 'Yes')
+            {
+                Set-Variable -Name Domain -Value $Domain -Scope Global
+            }
+        }#>
     }
     End
     {
+        return $Domain
     }
 }
