@@ -22,6 +22,8 @@ function Get-ZDAttachment
 
     Begin
     {
+        Write-Verbose -Message 'Creating paramters for Get-ZDAttachment'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/attachments/$AttachmentID.json"
                 Method = 'Get'
@@ -30,10 +32,14 @@ function Get-ZDAttachment
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method for Get-ZDAttachment'
+
         $Results = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning Results from Get-ZDAttachment'
+
         return $Results
     }
 }

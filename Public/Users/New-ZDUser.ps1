@@ -24,6 +24,8 @@ function New-ZDUser
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from New-ZDUser'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/users.json"
                 Method = 'Post'
@@ -34,6 +36,8 @@ function New-ZDUser
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from New-ZDUser'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -45,6 +49,8 @@ function New-ZDUser
     }
     End
     {
+        Write-Verbose -Message 'Returning results from New-ZDUser'
+
         return $Result
     }
 }

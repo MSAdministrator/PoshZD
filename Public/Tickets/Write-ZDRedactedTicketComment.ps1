@@ -31,6 +31,8 @@ function Write-ZDRedactedTicketComment
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Write-ZDRedactedTicketComment'
+
         $Body = @{}
 
         $Body.text = $Text
@@ -47,10 +49,14 @@ function Write-ZDRedactedTicketComment
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Write-ZDRedactedTicketComment'
+
         $ReturnObject = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Write-ZDRedactedTicketComment'
+
         return $ReturnObject
     }
 }

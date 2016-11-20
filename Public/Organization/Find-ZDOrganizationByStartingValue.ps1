@@ -22,6 +22,8 @@ function Find-ZDOrganizationByStartingValue
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Find-ZDOrganizationByStartingValue'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/organizations/autocomplete.json?name=$StartingValue"
                 Method = 'Get'
@@ -31,6 +33,8 @@ function Find-ZDOrganizationByStartingValue
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Find-ZDOrganizationByStartingValue'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -42,6 +46,8 @@ function Find-ZDOrganizationByStartingValue
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Find-ZDOrganizationByStartingValue'
+
         return $Result
     }
 }

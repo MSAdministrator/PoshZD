@@ -39,6 +39,8 @@ function Create-ZDOrganizationObject
 
     Begin
     {
+        Write-Verbose -Message 'Setting up ZD Organization Object'
+
         $JSONObject = @{}
         $Body = @{}
 
@@ -46,6 +48,8 @@ function Create-ZDOrganizationObject
     }
     Process
     {
+        Write-Verbose -Message 'Entering switch to create ZD Organization Object'
+
         switch ($PSBoundParameters.keys)
         {
             'ID'         { $Body.ID          = $ID         }
@@ -62,6 +66,8 @@ function Create-ZDOrganizationObject
     }
     End
     {
+        Write-Verbose -Message 'Returning ZD Organization Object'
+
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Organization
     }
 }

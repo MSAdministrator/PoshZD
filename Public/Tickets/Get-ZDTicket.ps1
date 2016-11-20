@@ -26,6 +26,8 @@ function Get-ZDTicket
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDTicket'
+
         $ReturnObject = @{}
 
         $params = @{
@@ -36,6 +38,8 @@ function Get-ZDTicket
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDTicket'
+
         $ReturnObject.ticket = (Invoke-RestMethod @params).ticket
         
         if ($GetTags)
@@ -51,6 +55,8 @@ function Get-ZDTicket
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDTicket'
+
         return $ReturnObject
     }
 }

@@ -19,7 +19,8 @@ function Search-ZDTicketsByTag
 
     Begin
     {
-        
+        Write-Verbose -Message 'Creating parameters from Search-ZDTicketsByTag'
+
         $Query = [URI]::EscapeDataString("tags:$Tag")
         
         $params = @{
@@ -31,10 +32,14 @@ function Search-ZDTicketsByTag
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Search-ZDTicketsByTag'
+
         $Result = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Search-ZDTicketsByTag'
+
         Add-ObjectDetail -InputObject $Result.results -TypeName PoshZD.Fields -DefaultProperties id,subject,status,requester_id,created_at
     }
 }

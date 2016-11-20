@@ -23,6 +23,8 @@ function Remove-ZDOrganization
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Remove-ZDOrganization'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'DELETE'
@@ -31,6 +33,8 @@ function Remove-ZDOrganization
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Remove-ZDOrganization'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -42,6 +46,8 @@ function Remove-ZDOrganization
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Remove-ZDOrganization'
+
         return $Result
     }
 }

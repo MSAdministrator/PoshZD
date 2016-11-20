@@ -56,6 +56,8 @@ function Create-ZDTicketObject
     }
     Process
     {
+        Write-Verbose -Message 'Creating ZenDesk Ticket Object from Create-ZDTicketObject'
+
         $JSONObject = @{}
         $Body = @{}
 
@@ -113,6 +115,8 @@ function Create-ZDTicketObject
     }
     End
     {
+        Write-Verbose -Message 'Returning ZenDesk Ticket Object from Create-ZDTicketObject'
+
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Ticket
     }
 }

@@ -24,19 +24,21 @@ function Update-ZDOrganization
 
     Begin
     {
-        
-    }
-    Process
-    {
-        try
-        {
-            $params = @{
+        Write-Verbose -Message 'Creating parameters from Update-ZDOrganization'
+
+        $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/organizations/$($OrganizationObject.id).json"
                 Method = 'Put'
                 Body = $($TicketObject | ConvertTo-Json)
                 Headers = $Headers
                 ContentType = 'application/json'
             }
+    }
+    Process
+    {
+        try
+        {
+            Write-Verbose -Message 'Invoking Rest Method from Update-ZDOrganization'
 
             $Result = Invoke-RestMethod @params
         }
@@ -47,6 +49,8 @@ function Update-ZDOrganization
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Update-ZDOrganization'
+
         return $Result
     }
 }

@@ -51,6 +51,8 @@ function Create-ZDUserObject
     }
     Process
     {
+        Write-Verbose -Message 'Creating ZenDesk User Object from Create-ZDUserObject'
+
         $JSONObject = @{}
         $Body = @{}
 
@@ -83,6 +85,8 @@ function Create-ZDUserObject
     }
     End
     {
+        Write-Verbose -Message 'Returning ZenDesk User Object from Create-ZDUserObject'
+
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Users
     }
 }

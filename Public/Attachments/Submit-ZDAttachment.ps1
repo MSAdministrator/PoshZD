@@ -22,11 +22,15 @@ function Submit-ZDAttachment
     {
         $Result = @()
         $firsttoken = ""
+
+        Write-Verbose -Message 'Beginning to submit ZenDesk Attachment'
     }
     Process
     {
         Write-Debug 'Attachment count before submitting attachment to ZenDesk'
         Write-Debug "Attachment.Count = $($Attachment.count)"
+
+        Write-Verbose "Attachment count before submitting attachment to ZenDesk $($Attachment.count)"
 
         for ($i = 0; $i -lt $Attachment.Count; $i++)
         {
@@ -89,8 +93,6 @@ function Submit-ZDAttachment
                     ContentType = 'application/binary'
                     InFile = $Attachment[$i]
                 }
-
-
 
                 try
                 {

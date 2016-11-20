@@ -25,6 +25,8 @@ function Get-ZDTicketFields
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDTicketFields'
+
         if ($AllTickets)
         {
             $params = @{
@@ -44,6 +46,8 @@ function Get-ZDTicketFields
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDTicketFields'
+
         $Result = Invoke-RestMethod @params
 
         $ReturnObject = @()
@@ -70,6 +74,8 @@ function Get-ZDTicketFields
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDTicketFields'
+
         Add-ObjectDetail -InputObject $ReturnObject -TypeName PoshZD.Fields -DefaultProperties FieldID,Title,CustomFields
     }
 }

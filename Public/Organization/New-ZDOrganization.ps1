@@ -24,10 +24,8 @@ function New-ZDOrganization
 
     Begin
     {
-        
-    }
-    Process
-    {
+        Write-Verbose -Message 'Creating parameters from New-ZDOrganization'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/organizations.json"
             Method = 'Post'
@@ -35,11 +33,18 @@ function New-ZDOrganization
             Headers = $Headers
             ContentType = 'application/json'
         }
+        
+    }
+    Process
+    {
+        Write-Verbose -Message 'Invoking Rest Method from New-ZDOrganization'
 
         $Result = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from New-ZDOrganization'
+
         return $Result
     }
 }

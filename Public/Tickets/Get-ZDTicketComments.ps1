@@ -24,6 +24,8 @@ function Get-ZDTicketComments
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDTicketComments'
+
         $ReturnObject = @{}
 
         $params = @{
@@ -34,10 +36,14 @@ function Get-ZDTicketComments
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDTicketComments'
+
         $ReturnObject = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDTicketComments'
+
         return $ReturnObject
     }
 }

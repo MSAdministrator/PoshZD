@@ -22,6 +22,8 @@ function Show-ZDOrganization
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Show-ZDOrganization'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'Get'
@@ -31,6 +33,8 @@ function Show-ZDOrganization
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Show-ZDOrganization'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -42,6 +46,8 @@ function Show-ZDOrganization
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Show-ZDOrganization'
+
         return $Result
     }
 }

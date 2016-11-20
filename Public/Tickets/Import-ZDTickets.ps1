@@ -30,6 +30,8 @@ function Import-ZDTickets
     }
     Process
     {
+        Write-Verbose -Message 'Creating parameters from Import-ZDTickets'
+
         foreach ($item in $TicketObject)
         {
             $Result = @()
@@ -48,6 +50,8 @@ function Import-ZDTickets
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Import-ZDTickets'
+
         return $ReturnObject
     }
 }

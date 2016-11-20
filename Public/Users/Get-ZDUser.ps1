@@ -22,6 +22,8 @@ function Get-ZDUser
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDUser'
+
         $filter = ''
 
         if ($UserRelatedInformation)
@@ -47,6 +49,8 @@ function Get-ZDUser
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDUser'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -58,6 +62,8 @@ function Get-ZDUser
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDUser'
+
         Add-ObjectDetail -InputObject $Result.$filter -TypeName PoshZD.Users
     }
 }

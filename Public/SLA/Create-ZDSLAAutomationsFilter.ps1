@@ -39,6 +39,8 @@ function Create-ZDSLAAutomationsFilter
     }
     Process
     {
+        Write-Verbose -Message 'Creating ZenDesk Automations Filter from Create-ZDSLAAutomationsFilter'
+
         $JSONObject = @{}
         $Body = @{}
 
@@ -85,6 +87,8 @@ function Create-ZDSLAAutomationsFilter
     }
     End
     {
+        Write-Verbose -Message 'Returning ZenDesk Automations Filter from Create-ZDSLAAutomationsFilter'
+
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Ticket
     }
 }

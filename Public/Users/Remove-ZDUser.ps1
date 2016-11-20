@@ -23,6 +23,8 @@ function Remove-ZDUser
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Remove-ZDUser'
+
         $params = @{
                 Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID.json"
                 Method = 'DELETE'
@@ -33,6 +35,8 @@ function Remove-ZDUser
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Remove-ZDUser'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -44,6 +48,8 @@ function Remove-ZDUser
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Remove-ZDUser'
+
         return $Result
     }
 }

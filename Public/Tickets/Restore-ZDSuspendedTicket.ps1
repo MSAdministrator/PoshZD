@@ -34,6 +34,8 @@ function Restore-ZDSuspendedTicket
     }
     Process
     {
+        Write-Verbose -Message 'Creating parameters from Restore-ZDSuspendedTicket'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/suspended_tickets/recover_many.json?ids=$($IDs -join ",")"
             Method = 'Put'
@@ -41,11 +43,15 @@ function Restore-ZDSuspendedTicket
             ContentType = 'application/json'
         }
 
+        Write-Verbose -Message 'Invoking Rest Method from Restore-ZDSuspendedTicket'
+
         $Result = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Restore-ZDSuspendedTicket'
+
         return $Result.suspended_tickets
     }
 }

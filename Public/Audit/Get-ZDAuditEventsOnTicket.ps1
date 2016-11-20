@@ -24,6 +24,8 @@ function Get-ZDAuditEventsOnTicket
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDAuditEventsOnTicket'
+        
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/audits.json"
             Method = 'Get'
@@ -32,11 +34,15 @@ function Get-ZDAuditEventsOnTicket
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDAuditEventsOnTicket'
+
         $Result = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDAuditEventsOnTicket'
+
         return $Result
     }
 }

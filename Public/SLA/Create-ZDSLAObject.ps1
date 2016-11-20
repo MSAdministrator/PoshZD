@@ -56,6 +56,8 @@ function Create-ZDSLAObject
     }
     Process
     {
+        Write-Verbose -Message 'Creating ZenDesk SLA Object from Create-ZDSLAObject'
+
         $JSONObject = @{}
         $Body = @{}
 
@@ -113,6 +115,8 @@ function Create-ZDSLAObject
     }
     End
     {
+        Write-Verbose -Message 'Returning ZenDesk SLA Object from Create-ZDSLAObject'
+
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Ticket
     }
 }

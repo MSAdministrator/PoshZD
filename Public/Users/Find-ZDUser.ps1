@@ -27,6 +27,8 @@ function Find-ZDUser
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Find-ZDUser'
+
         if ($PSBoundParameters.ContainsKey('Name'))
         {
             $params = @{
@@ -48,6 +50,8 @@ function Find-ZDUser
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Find-ZDUser'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -59,6 +63,8 @@ function Find-ZDUser
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Find-ZDUser'
+
         return $Result
     }
 }

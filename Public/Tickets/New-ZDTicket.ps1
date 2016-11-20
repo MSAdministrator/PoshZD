@@ -25,10 +25,8 @@ function New-ZDTicket
 
     Begin
     {
-        
-    }
-    Process
-    {
+        Write-Verbose -Message 'Creating parameters from New-ZDTicket'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/tickets.json"
             Method = 'Post'
@@ -36,11 +34,17 @@ function New-ZDTicket
             Headers = $Headers
             ContentType = 'application/json'
         }
+    }
+    Process
+    {
+        Write-Verbose -Message 'Invoking Rest Method from New-ZDTicket'
 
         $Result = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from New-ZDTicket'
+
         return $Result
     }
 }

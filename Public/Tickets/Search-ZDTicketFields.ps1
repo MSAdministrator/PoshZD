@@ -27,6 +27,8 @@ function Search-ZDTicketFields
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Search-ZDTicketFields'
+
         if ($AllTickets)
         {
             $params = @{
@@ -46,6 +48,8 @@ function Search-ZDTicketFields
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Search-ZDTicketFields'
+
         $Result = Invoke-RestMethod @params
 
         $ReturnObject = @()
@@ -79,6 +83,8 @@ function Search-ZDTicketFields
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Search-ZDTicketFields'
+
         Add-ObjectDetail -InputObject $ReturnObject -TypeName PoshZD.Fields -DefaultProperties FieldID,Title,CustomFields
     }
 }

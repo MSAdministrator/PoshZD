@@ -20,6 +20,8 @@ function Show-ZDOrganizations
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Show-ZDOrganizations'
+
         if ($UserID)
         {
             $params = @{
@@ -39,6 +41,8 @@ function Show-ZDOrganizations
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Show-ZDOrganizations'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -50,6 +54,8 @@ function Show-ZDOrganizations
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Show-ZDOrganizations'
+
         Add-ObjectDetail -InputObject $Result -TypeName PoshZD.Organization
     }
 }

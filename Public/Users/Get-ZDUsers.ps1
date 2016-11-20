@@ -29,6 +29,8 @@ function Get-ZDUsers
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDUsers'
+
         $RoleString = @()
 
         if ($Role)
@@ -49,12 +51,9 @@ function Get-ZDUsers
         {
             $RoleString = ''
         }
-    }
-    Process
-    {
-        try
-        {
-            if ($GroupID)
+
+
+        if ($GroupID)
             {
                 $params = @{
                     Uri = ("https://$Domain.zendesk.com/api/v2/groups/$GroupID/users.json?$RoleString").TrimEnd('&')
@@ -78,7 +77,13 @@ function Get-ZDUsers
                     Headers = $Headers
                 }
             }
+    }
+    Process
+    {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDUsers'
 
+        try
+        {
             $Result = Invoke-RestMethod @params
         }
         catch
@@ -88,6 +93,8 @@ function Get-ZDUsers
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDUsers'
+
         return $Result
     }
 }

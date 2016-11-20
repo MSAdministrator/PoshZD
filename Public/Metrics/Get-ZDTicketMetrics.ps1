@@ -34,6 +34,8 @@ function Get-ZDTicketMetrics
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDTicketMetrics'
+
         $ReturnObject = @{}
 
         if ($All)
@@ -65,10 +67,14 @@ function Get-ZDTicketMetrics
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDTicketMetrics'
+
         $ReturnObject = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDTicketMetrics'
+
         if ($All)
         {
             return $ReturnObject.ticket_metrics

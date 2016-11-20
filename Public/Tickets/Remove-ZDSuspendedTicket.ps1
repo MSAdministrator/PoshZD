@@ -34,17 +34,23 @@ function Remove-ZDSuspendedTicket
     }
     Process
     {
+        Write-Verbose -Message 'Creating parameters from Remove-ZDSuspendedTicket'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/suspended_tickets/destroy_many.json?ids=$($IDs -join ",")"
             Method = 'DELETE'
             Headers = $Headers
         }
 
+        Write-Verbose -Message 'Invoking Rest Method from Remove-ZDSuspendedTicket'
+
         $Result = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Remove-ZDSuspendedTicket'
+
         return $Result
     }
 }

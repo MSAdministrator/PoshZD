@@ -1,4 +1,4 @@
-﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+﻿$here = Split-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) -Parent
 
 $module = 'PoshZD'
 

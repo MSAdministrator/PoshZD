@@ -29,6 +29,8 @@ function Set-ZDTicketCommentPrivate
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Set-ZDTicketCommentPrivate'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId/make_private.json"
             Method = 'Put'
@@ -38,11 +40,15 @@ function Set-ZDTicketCommentPrivate
     }
     Process
     {
+        Write-Verbose -Message 'Invokeing Rest Method from Set-ZDTicketCommentPrivate'
+
         $Result = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Set-ZDTicketCommentPrivate'
+
         return $Result
     }
 }

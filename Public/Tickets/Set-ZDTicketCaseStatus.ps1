@@ -29,6 +29,8 @@ function Set-ZDTicketCaseStatus
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Set-ZDTicketCaseStatus'
+
         $BodyPost = @{
             ticket = @{
                 custom_fields = @{
@@ -48,10 +50,14 @@ function Set-ZDTicketCaseStatus
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Set-ZDTicketCaseStatus'
+
         $restresponse = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Set-ZDTicketCaseStatus'
+
         return $restresponse
     }
 }

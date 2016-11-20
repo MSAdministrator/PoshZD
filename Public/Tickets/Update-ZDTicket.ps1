@@ -29,10 +29,8 @@ function Update-ZDTicket
 
     Begin
     {
-        
-    }
-    Process
-    {
+        Write-Verbose -Message 'Creating parameters from Update-ZDTicket'
+
         $params = @{
             Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketNumber.json"
             Method = 'Put'
@@ -40,11 +38,17 @@ function Update-ZDTicket
             Headers = $Headers
             ContentType = 'application/json'
         }
+    }
+    Process
+    {
+        Write-Verbose -Message 'Invoking Rest Method from Update-ZDTicket'
 
         $Result = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Update-ZDTicket'
+
         return $Result
     }
 }

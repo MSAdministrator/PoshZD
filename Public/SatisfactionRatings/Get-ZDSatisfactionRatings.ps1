@@ -67,6 +67,9 @@ function Get-ZDSatisfactionRatings
 
     Begin
     {
+
+        Write-Verbose -Message 'Gathering parameters from Get-ZDSatisfactionRatings'
+
         $URI = ''
 
         if ($All)
@@ -90,6 +93,8 @@ function Get-ZDSatisfactionRatings
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDSatisfactionRatings'
+
         $Result = @()
 
         $params = @{
@@ -102,6 +107,8 @@ function Get-ZDSatisfactionRatings
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDSatisfactionRatings'
+
         return $Result.satisfaction_ratings
     }
 }

@@ -34,6 +34,8 @@ function Get-ZDSLAPolicies
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDSLAPolicies'
+
         $ReturnObject = @{}
 
         if ($All)
@@ -58,10 +60,14 @@ function Get-ZDSLAPolicies
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDSLAPolicies'
+
         $ReturnObject = Invoke-RestMethod @params
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDSLAPolicies'
+
         if ($All)
         {
             return $ReturnObject.sla_policies

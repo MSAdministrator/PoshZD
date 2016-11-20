@@ -36,6 +36,8 @@ function Get-ZDAllTickets
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDAllTickets'
+
         if ($OrgID)
         {
             $URI = "https://$Domain.zendesk.com/api/v2/organizations/$OrgID/tickets.json"
@@ -64,11 +66,15 @@ function Get-ZDAllTickets
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDAllTickets'
+
         $restresponse = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDAllTickets'
+
         return $restresponse
     }
 }

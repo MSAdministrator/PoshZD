@@ -29,6 +29,8 @@ function Update-ZDUser
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Update-ZDUser'
+
         if ($PSBoundParameters.ContainsKey('User'))
         {
             $params = @{
@@ -52,6 +54,8 @@ function Update-ZDUser
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Update-ZDUser'
+
         try
         {
             $Result = Invoke-RestMethod @params
@@ -63,6 +67,8 @@ function Update-ZDUser
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Update-ZDUser'
+
         return $Result
     }
 }

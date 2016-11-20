@@ -27,6 +27,8 @@ function Set-ZDDomain
     }
     Process
     {
+        Write-Verbose -Message 'Creating global DOMAIN variable for your ZenDesk Domain from Set-ZDDomain'
+
         if (Test-Path Variable:$Domain)
         {  
             Set-Variable -Name Domain -Value $Domain -Scope Global
@@ -43,6 +45,8 @@ function Set-ZDDomain
     }
     End
     {
+        Write-Verbose -Message 'Returning global DOMAIN variable for your ZenDesk Domain from Set-ZDDomain'
+
         return $Domain
     }
 }

@@ -30,6 +30,8 @@ function Get-ZDSuspendedTickets
 
     Begin
     {
+        Write-Verbose -Message 'Creating parameters from Get-ZDSuspendedTickets'
+
         if ($TicketId)
         {
             $URI = "https://$Domain.zendesk.com/api/v2/suspended_tickets/$TicketId.json"
@@ -49,11 +51,15 @@ function Get-ZDSuspendedTickets
     }
     Process
     {
+        Write-Verbose -Message 'Invoking Rest Method from Get-ZDSuspendedTickets'
+
         $Result = Invoke-RestMethod @params
 
     }
     End
     {
+        Write-Verbose -Message 'Returning results from Get-ZDSuspendedTickets'
+
         return $Result.suspended_tickets
     }
 }
