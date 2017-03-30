@@ -45,15 +45,15 @@ function Get-ZDAllTickets
         {
             switch ($PSBoundParameters.Keys)
             {
-                'Requested' { $URI = "https://phishme.zendesk.com/api/v2/users/$UserID/tickets/requested.json" }
-                'CCD'       { $URI = "https://phishme.zendesk.com/api/v2/users/$UserID/tickets/ccd.json"       }
-                'Assigned'  { $URI = "https://phishme.zendesk.com/api/v2/users/$UserID/tickets/assigned.json"  }
+                'Requested' { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/requested.json" }
+                'CCD'       { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/ccd.json"       }
+                'Assigned'  { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/assigned.json"  }
             }
         }
 
         if (($null -eq $UserID) -or ($null -eq $OrgID))
         {
-            $URI = "https://phishme.zendesk.com/api/v2/tickets.json"
+            $URI = "https://$Domain.zendesk.com/api/v2/tickets.json"
         }
 
         $params = @{
