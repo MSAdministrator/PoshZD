@@ -1,5 +1,6 @@
 PoshZD
 =============
+[![Build status](https://ci.appveyor.com/api/projects/status/86ph4p43kcakx40x?svg=true)](https://ci.appveyor.com/project/MSAdministrator/poshzd)
 
 A PowerShell Module to interact with the ZenDesk ticketing system.
 
