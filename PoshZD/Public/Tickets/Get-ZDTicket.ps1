@@ -51,12 +51,16 @@ function Get-ZDTicket
             }
 
             $ReturnObject.tags = (Invoke-RestMethod @params).tags
+
+            return $ReturnObject
+        }
+        else
+        {
+            return $ReturnObject.ticket
         }
     }
     End
     {
-        Write-Verbose -Message 'Returning results from Get-ZDTicket'
-
-        return $ReturnObject
+       # Intentionally left blank
     }
 }

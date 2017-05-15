@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Create-ZDTicketObject
+function New-ZDSLAObject
 {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]
@@ -17,15 +17,15 @@ function Create-ZDTicketObject
         # Param1 help description
         [Parameter(Mandatory=$false,
                    ValueFromPipeline=$true)]
-        [string]$Subject,
+        [string]$Title,
 
         # Param2 help description
         
         [Parameter(Mandatory=$true)]
-        $Description,
+        [string]$Description,
 
-        [Parameter(Mandatory=$true,ParameterSetName='Attachment')]
-        $Comment,
+        [Parameter(Mandatory=$false)]
+        [int]$Position,
         [Parameter(Mandatory=$false,ParameterSetName='Attachment')]
         [ValidateSet('true','false')]
         $IsPublic = 'true',
@@ -56,7 +56,7 @@ function Create-ZDTicketObject
     }
     Process
     {
-        Write-Verbose -Message 'Creating ZenDesk Ticket Object from Create-ZDTicketObject'
+        Write-Verbose -Message 'Creating ZenDesk SLA Object from Create-ZDSLAObject'
 
         $JSONObject = @{}
         $Body = @{}
@@ -115,7 +115,7 @@ function Create-ZDTicketObject
     }
     End
     {
-        Write-Verbose -Message 'Returning ZenDesk Ticket Object from Create-ZDTicketObject'
+        Write-Verbose -Message 'Returning ZenDesk SLA Object from Create-ZDSLAObject'
 
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Ticket
     }

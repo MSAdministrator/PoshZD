@@ -1,4 +1,4 @@
-﻿$here = Split-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) -Parent
+﻿$here = "$(Split-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) -Parent)\PoshZD"
 
 $module = 'PoshZD'
 
@@ -41,7 +41,7 @@ Describe "$module PowerShell Module Tests" {
                   'Get-ZDTicketAuditEventID',             
                   'Set-ZDTicketCommentPrivate',           
                   'Get-ZDTicketMetrics',                  
-                  'Create-ZDOrganizationObject',          
+                  'New-ZDOrganizationObject',          
                   'Find-ZDOrganizationByStartingValue',   
                   'New-ZDOrganization',                   
                   'Remove-ZDOrganization',                
@@ -51,10 +51,10 @@ Describe "$module PowerShell Module Tests" {
                   'Update-ZDOrganization',            
                   'Get-ZDSatisfactionRatings',            
                   'Search-ZDTicketsByTag',                
-                  'Create-ZDSLAAutomationsFilter',        
-                  'Create-ZDSLAObject',                   
+                  'New-ZDSLAAutomationsFilter',        
+                  'New-ZDSLAObject',                   
                   'Get-ZDSLAPolicies',                    
-                  'Create-ZDTicketObject',                
+                  'New-ZDTicketObject',                
                   'Get-ZDAllTickets',                     
                   'Get-ZDSuspendedTickets',               
                   'Get-ZDTicket',                         
@@ -70,7 +70,7 @@ Describe "$module PowerShell Module Tests" {
                   'Set-ZDTicketCaseStatus',               
                   'Update-ZDTicket',                      
                   'Write-ZDRedactedTicketComment',        
-                  'Create-ZDUserObject',                  
+                  'New-ZDUserObject',                  
                   'Find-ZDUser',                          
                   'Get-ZDUser',                           
                   'Get-ZDUsers',                          
@@ -149,12 +149,12 @@ Describe "$module PowerShell Module Tests" {
             }
         }#Context Function Tests
 
-        Context "$function has tests" {
+       # Context "$function has tests" {
             
-            It "$function.ps1 has tests" {
-                "$here\Tests\$function.Tests.ps1" | Should exist
-            }
-        }
+       #     It "$function.ps1 has tests" {
+       #         "$here\Tests\$function.Tests.ps1" | Should exist
+       #     }
+       # }
     }
     
 }

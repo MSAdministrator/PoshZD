@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Create-ZDUserObject
+function New-ZDUserObject
 {
     [CmdletBinding()]
     Param

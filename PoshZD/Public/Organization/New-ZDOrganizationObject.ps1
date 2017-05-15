@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Create-ZDOrganizationObject
+function New-ZDOrganizationObject
 {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]

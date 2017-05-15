@@ -8,7 +8,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-function Create-ZDSLAAutomationsFilter
+function New-ZDTicketObject
 {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]
@@ -17,21 +17,38 @@ function Create-ZDSLAAutomationsFilter
         # Param1 help description
         [Parameter(Mandatory=$false,
                    ValueFromPipeline=$true)]
-        [ValidateSet('All','Any')]
-        $Scope,
+        [string]$Subject,
 
         # Param2 help description
         
         [Parameter(Mandatory=$true)]
-        [ValidateSet('NEW','OPEN','PENDING','SOLVED', 'CLOSED', 'assigned_at','updated_at', 'requester_updated_at', 'assignee_updated_at', 'due_date','until_due_date' )]
-        [string[]]$Field,
+        $Description,
 
-        [Parameter(Mandatory=$false)]
-        [ValidateSet('is','is_business_hours','less_than','less_than_business_hours', 'greater_than','greater_than_business_hours')]
-        [string[]]$Operator,
+        [Parameter(Mandatory=$true,ParameterSetName='Attachment')]
+        $Comment,
+        [Parameter(Mandatory=$false,ParameterSetName='Attachment')]
+        [ValidateSet('true','false')]
+        $IsPublic = 'true',
+        [Parameter(Mandatory=$false,ParameterSetName='Attachment')]
+        $Attachment,
 
-        [Parameter(Mandatory=$false)]
-        [int[]]$Value
+        $RequesterID,
+        $AssigneeID,
+        $AssigneeEmail,
+        $GroupID,
+        [array]$CollaboratorIDs,
+        [array]$AdditionalCollaborators,
+        [ValidateSet('problem','incident','question','task')]
+        $Type,
+        [ValidateSet('urgent','high','normal','low')]
+        $Priority,
+        [ValidateSet('new','open','pending','hold','solved','closed')]
+        $Status,
+        [array]$Tags,
+        
+        $CustomFieldID,
+        $CustomFieldValue,
+        [switch]$SafeUpdate
     )
 
     Begin
@@ -39,31 +56,42 @@ function Create-ZDSLAAutomationsFilter
     }
     Process
     {
-        Write-Verbose -Message 'Creating ZenDesk Automations Filter from Create-ZDSLAAutomationsFilter'
+        Write-Verbose -Message 'Creating ZenDesk Ticket Object from Create-ZDTicketObject'
 
         $JSONObject = @{}
         $Body = @{}
 
-        $JSONObject.filter = ''
+        $JSONObject.ticket = ''
 
-        if ($Scope -eq 'All')
+        if ($Attachment)
         {
-            $body.all = @{}
-
-            foreach ($f in $Field)
-            {
-                foreach ($o in $Operator)
-                {
-                    foreach ($v in $Value)
-                    {
-                        ($body.all).Add('field',$f)
-                        ($body.all).Add('operator',$o)
-                        ($body.all).Add('value',$v)
-                    }
-                }
+            $Body.comment = @{
+                body = $Comment
+                uploads = $Attachment
+                public = $IsPublic
             }
         }
-                   
+        elseif ($Comment)
+        {
+            $Body.comment = @{
+                body = $Comment
+                public = $IsPublic
+            }
+        }
+
+        if ($CustomFieldID)
+        {
+            $body.custom_fields = @(
+                @{
+                    id = $CustomFieldID
+                    value = $CustomFieldValue
+                },
+                @{ 
+                    id = 31980718
+                    value = 'on_hold'
+                }
+            )
+        }
 
         switch ($PSBoundParameters.Keys)
         {
@@ -87,7 +115,7 @@ function Create-ZDSLAAutomationsFilter
     }
     End
     {
-        Write-Verbose -Message 'Returning ZenDesk Automations Filter from Create-ZDSLAAutomationsFilter'
+        Write-Verbose -Message 'Returning ZenDesk Ticket Object from Create-ZDTicketObject'
 
         Add-ObjectDetail -InputObject $JSONObject -TypeName PoshZD.Ticket
     }
