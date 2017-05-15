@@ -21,4 +21,4 @@ build: false
 
 #Kick off the CI/CD pipeline
 test_script:
-- ps: . .\Tests\PoshZD.Tetst.ps1
+- ps: . .\Tests\PoshZD.Tests.ps1
