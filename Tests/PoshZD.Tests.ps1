@@ -1,5 +1,6 @@
 ﻿$here = "$(Split-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) -Parent)\PoshZD"
 
+
 $module = 'PoshZD'
 
 Describe "$module PowerShell Module Tests" {
@@ -149,12 +150,25 @@ Describe "$module PowerShell Module Tests" {
             }
         }#Context Function Tests
 
-       # Context "$function has tests" {
+
+        $testLocation = "$here\Public\*\$function.Tests.ps1" -replace $module,'Tests'
+
+        if (Test-Path $testLocation)
+        {
+            Context "$function has tests" {
             
-       #     It "$function.ps1 has tests" {
-       #         "$here\Tests\$function.Tests.ps1" | Should exist
-       #     }
-       # }
+                It "$function.ps1 has tests" {
+                    $testLocation | Should exist
+                }
+
+                It "running $function.ps1 tests" {
+                    Invoke-Pester $testLocation
+                }
+            }
+        }
     }
+
     
+    $FunctionTests = Get-ChildItem "$(Split-Path -Path $here -Parent)\Tests\Public\Tickets\*.ps1" 
+    $FunctionTests
 }
