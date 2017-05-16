@@ -68,13 +68,11 @@ function Get-ZDAllTickets
     {
         Write-Verbose -Message 'Invoking Rest Method from Get-ZDAllTickets'
 
-        $restresponse = Invoke-RestMethod @params
+        return (Invoke-RestMethod @params).tickets
 
     }
     End
     {
-        Write-Verbose -Message 'Returning results from Get-ZDAllTickets'
-
-        return $restresponse
+        
     }
 }
