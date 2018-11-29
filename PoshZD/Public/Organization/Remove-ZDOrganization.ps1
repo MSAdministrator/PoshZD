@@ -26,7 +26,7 @@ function Remove-ZDOrganization
         Write-Verbose -Message 'Creating parameters from Remove-ZDOrganization'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/organizations/$OrganizationID.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'DELETE'
                 Headers = $Headers
         }

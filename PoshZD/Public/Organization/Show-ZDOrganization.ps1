@@ -25,7 +25,7 @@ function Show-ZDOrganization
         Write-Verbose -Message 'Creating parameters from Show-ZDOrganization'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/organizations/$OrganizationID.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'Get'
                 Headers = $Headers
         }

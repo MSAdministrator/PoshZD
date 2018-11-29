@@ -41,7 +41,7 @@ function Get-ZDTicketMetrics
         if ($All)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/ticket_metrics.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/ticket_metrics.json"
                 Method = 'Get'
                 Headers = $Headers
             }
@@ -50,7 +50,7 @@ function Get-ZDTicketMetrics
         if ($MetricID)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/ticket_metrics/$MetricID.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/ticket_metrics/$MetricID.json"
                 Method = 'Get'
                 Headers = $Headers
             }
@@ -59,7 +59,7 @@ function Get-ZDTicketMetrics
         if ($TicketId)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/metrics.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/metrics.json"
                 Method = 'Get'
                 Headers = $Headers
             }

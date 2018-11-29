@@ -25,7 +25,7 @@ function Find-ZDOrganizationByStartingValue
         Write-Verbose -Message 'Creating parameters from Find-ZDOrganizationByStartingValue'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/organizations/autocomplete.json?name=$StartingValue"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/autocomplete.json?name=$StartingValue"
                 Method = 'Get'
                 Headers = $Headers
         }

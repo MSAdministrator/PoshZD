@@ -34,12 +34,12 @@ function Get-ZDSuspendedTickets
 
         if ($TicketId)
         {
-            $URI = "https://$Domain.zendesk.com/api/v2/suspended_tickets/$TicketId.json"
+            $URI = "https://$env:ZDDomain.zendesk.com/api/v2/suspended_tickets/$TicketId.json"
         }
 
         if ($All)
         {
-            $URI = "https://$Domain.zendesk.com/api/v2/suspended_tickets.json"
+            $URI = "https://$env:ZDDomain.zendesk.com/api/v2/suspended_tickets.json"
 
         }
 

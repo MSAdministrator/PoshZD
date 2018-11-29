@@ -25,7 +25,7 @@ function Show-ZDOrganizations
         if ($UserID)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID/organizations.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/organizations.json"
                 Method = 'Get'
                 Headers = $Headers
             }
@@ -33,7 +33,7 @@ function Show-ZDOrganizations
         else
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/organizations.json"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations.json"
                     Method = 'Get'
                     Headers = $Headers
                 }

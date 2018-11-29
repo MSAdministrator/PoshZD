@@ -40,7 +40,7 @@ function Write-ZDRedactedTicketComment
         $ReturnObject = @{}
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/comments/$CommentId/redact.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/comments/$CommentId/redact.json"
             Method = 'Put'
             Body = $($Body | ConvertTo-Json)
             Headers = $Headers

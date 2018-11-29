@@ -29,24 +29,9 @@ function Set-ZDDomain
     {
         Write-Verbose -Message 'Creating global DOMAIN variable for your ZenDesk Domain from Set-ZDDomain'
 
-        if (Test-Path Variable:$Domain)
-        {  
-            Set-Variable -Name Domain -Value $Domain -Scope Global
-        }
-        <#else
-        {
-            $Response = [System.Windows.Forms.MessageBox]::Show("A Domain variable already exists.  Would you like to overwrite this variable?" , "Status" , 4)
-            
-            if ($Response -eq 'Yes')
-            {
-                Set-Variable -Name Domain -Value $Domain -Scope Global
-            }
-        }#>
+        $env:ZDDomain = $Domain
     }
     End
     {
-        Write-Verbose -Message 'Returning global DOMAIN variable for your ZenDesk Domain from Set-ZDDomain'
-
-        return $Domain
     }
 }

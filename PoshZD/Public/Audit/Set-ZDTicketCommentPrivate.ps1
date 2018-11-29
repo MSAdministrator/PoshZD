@@ -32,7 +32,7 @@ function Set-ZDTicketCommentPrivate
         Write-Verbose -Message 'Creating parameters from Set-ZDTicketCommentPrivate'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId/make_private.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId/make_private.json"
             Method = 'Put'
             Headers = $Headers
             ContentType = 'application/json'

@@ -27,7 +27,7 @@ function New-ZDUser
         Write-Verbose -Message 'Creating parameters from New-ZDUser'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/users.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users.json"
                 Method = 'Post'
                 Headers = $Headers
                 Body = ($User | ConvertTo-Json)

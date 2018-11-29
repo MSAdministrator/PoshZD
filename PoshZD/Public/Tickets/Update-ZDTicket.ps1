@@ -32,7 +32,7 @@ function Update-ZDTicket
         Write-Verbose -Message 'Creating parameters from Update-ZDTicket'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketNumber.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketNumber.json"
             Method = 'Put'
             Body = $($TicketObject | ConvertTo-Json -Depth 6)
             Headers = $Headers

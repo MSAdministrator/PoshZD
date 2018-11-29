@@ -40,7 +40,7 @@ function Submit-ZDAttachment
             if (0 -eq $i)
             {
                 $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $Attachment[$i])"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $Attachment[$i])"
                     Method = 'Post'
                     Headers = $Headers
                     ContentType = 'application/binary'
@@ -87,7 +87,7 @@ function Submit-ZDAttachment
                 $tempobj = @{}
 
                 $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $Attachment[$i])&token=$firsttoken"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/uploads.json?filename=$(Split-Path -Leaf $Attachment[$i])&token=$firsttoken"
                     Method = 'Post'
                     Headers = $Headers
                     ContentType = 'application/binary'

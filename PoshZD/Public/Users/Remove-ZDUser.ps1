@@ -26,7 +26,7 @@ function Remove-ZDUser
         Write-Verbose -Message 'Creating parameters from Remove-ZDUser'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                 Method = 'DELETE'
                 Headers = $Headers
                 Body = ($User | ConvertTo-Json)

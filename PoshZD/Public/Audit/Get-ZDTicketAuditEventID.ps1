@@ -32,7 +32,7 @@ function Get-ZDTicketAuditEventID
         Write-Verbose -Message 'Creating parameters from Get-ZDTicketAuditEventID'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId.json"
             Method = 'Get'
             Headers = $Headers
         }

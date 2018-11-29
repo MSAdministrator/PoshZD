@@ -37,7 +37,7 @@ function Import-ZDTickets
             $Result = @()
 
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/imports/tickets/create_many.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/imports/tickets/create_many.json"
                 Method = 'Post'
                 Body = $($item | ConvertTo-Json)
                 Headers = $Headers

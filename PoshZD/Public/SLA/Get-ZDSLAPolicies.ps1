@@ -41,7 +41,7 @@ function Get-ZDSLAPolicies
         if ($All)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/slas/policies"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/slas/policies"
                 Method = 'Get'
                 Headers = $Headers            
                 ContentType = 'application/json'
@@ -51,7 +51,7 @@ function Get-ZDSLAPolicies
         if ($PolicyId)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/slas/policies/$PolicyId"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/slas/policies/$PolicyId"
                 Method = 'Get'
                 Headers = $Headers
                 ContentType = 'application/json'

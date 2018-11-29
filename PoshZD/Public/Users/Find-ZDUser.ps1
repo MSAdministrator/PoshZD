@@ -32,7 +32,7 @@ function Find-ZDUser
         if ($PSBoundParameters.ContainsKey('Name'))
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/users/search.json?query=$Name"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/search.json?query=$Name"
                     Method = 'Get'
                     Headers = $Headers
                     Body = ($User | ConvertTo-Json)
@@ -41,7 +41,7 @@ function Find-ZDUser
         elseif ($PSBoundParameters.ContainsKey('Email'))
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/users/search.json?query=$Email"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/search.json?query=$Email"
                     Method = 'Get'
                     Headers = $Headers
                     Body = ($User | ConvertTo-Json)

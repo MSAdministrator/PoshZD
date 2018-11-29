@@ -31,7 +31,7 @@ function Get-ZDTicket
         $ReturnObject = @{}
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId.json"
             Method = 'Get'
             Headers = $Headers
         }
@@ -45,7 +45,7 @@ function Get-ZDTicket
         if ($GetTags)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/tags.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/tags.json"
                 Method = 'Get'
                 Headers = $Headers
             }

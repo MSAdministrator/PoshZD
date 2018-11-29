@@ -29,7 +29,7 @@ function Get-ZDUser
         if ($UserRelatedInformation)
         {
             $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID/related.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/related.json"
                 Method = 'Get'
                 Headers = $Headers
             }
@@ -39,7 +39,7 @@ function Get-ZDUser
         else
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID.json"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                     Method = 'Get'
                     Headers = $Headers
                 }

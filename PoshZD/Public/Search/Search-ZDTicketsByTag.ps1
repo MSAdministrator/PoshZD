@@ -24,7 +24,7 @@ function Search-ZDTicketsByTag
         $Query = [URI]::EscapeDataString("tags:$Tag")
         
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/search.json?query=$Query"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/search.json?query=$Query"
             Method = 'Get'
             Headers = $Headers
         }

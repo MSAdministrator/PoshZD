@@ -25,7 +25,7 @@ function Get-ZDAttachment
         Write-Verbose -Message 'Creating paramters for Get-ZDAttachment'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/attachments/$AttachmentID.json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/attachments/$AttachmentID.json"
                 Method = 'Get'
                 Headers = $Headers
             }

@@ -74,20 +74,20 @@ function Get-ZDSatisfactionRatings
 
         if ($All)
         {
-            $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json"
+            $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json"
         }
         
         if (-not($All))
         {
             switch ($PSBoundParameters.Keys)
             {
-                'Received'               { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=received"                }
-                'ReceivedWithComment'    { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=received_with_comment"   }
-                'ReceivedWithoutComment' { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=receied_without_comment" }
-                'GoodWithComment'        { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=good_with_comment"       }
-                'GoodWithoutComment'     { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=good_without_comment"    }
-                'BadWithComment'         { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=bad_with_comment"        }
-                'BadWithoutComment'      { $URI = "https://$Domain.zendesk.com/api/v2/satisfaction_ratings.json?score=bad_without_comment"     }
+                'Received'               { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=received"                }
+                'ReceivedWithComment'    { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=received_with_comment"   }
+                'ReceivedWithoutComment' { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=receied_without_comment" }
+                'GoodWithComment'        { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=good_with_comment"       }
+                'GoodWithoutComment'     { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=good_without_comment"    }
+                'BadWithComment'         { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=bad_with_comment"        }
+                'BadWithoutComment'      { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/satisfaction_ratings.json?score=bad_without_comment"     }
             }
         }
     }

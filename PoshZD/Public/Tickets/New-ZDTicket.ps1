@@ -28,7 +28,7 @@ function New-ZDTicket
         Write-Verbose -Message 'Creating parameters from New-ZDTicket'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets.json"
             Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
             Headers = $Headers

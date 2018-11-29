@@ -41,7 +41,7 @@ function Merge-ZDTicket
         Write-Verbose -Message 'Creating parameters from Merge-ZDTicket'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$SourceTicket/merge.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$SourceTicket/merge.json"
             Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
             Headers = $Headers

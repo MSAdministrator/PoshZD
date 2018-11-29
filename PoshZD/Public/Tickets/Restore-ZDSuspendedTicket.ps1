@@ -37,7 +37,7 @@ function Restore-ZDSuspendedTicket
         Write-Verbose -Message 'Creating parameters from Restore-ZDSuspendedTicket'
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/suspended_tickets/recover_many.json?ids=$($IDs -join ",")"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/suspended_tickets/recover_many.json?ids=$($IDs -join ",")"
             Method = 'Put'
             Headers = $Headers
             ContentType = 'application/json'

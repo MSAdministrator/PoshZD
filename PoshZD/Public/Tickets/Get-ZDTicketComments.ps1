@@ -29,7 +29,7 @@ function Get-ZDTicketComments
         $ReturnObject = @{}
 
         $params = @{
-            Uri = "https://$Domain.zendesk.com/api/v2/tickets/$TicketId/comments.json"
+            Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/comments.json"
             Method = 'Get'
             Headers = $Headers
         }

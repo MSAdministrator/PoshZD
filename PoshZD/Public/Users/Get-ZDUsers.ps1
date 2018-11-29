@@ -56,7 +56,7 @@ function Get-ZDUsers
         if ($GroupID)
             {
                 $params = @{
-                    Uri = ("https://$Domain.zendesk.com/api/v2/groups/$GroupID/users.json?$RoleString").TrimEnd('&')
+                    Uri = ("https://$env:ZDDomain.zendesk.com/api/v2/groups/$GroupID/users.json?$RoleString").TrimEnd('&')
                     Method = 'Get'
                     Headers = $Headers
                 }
@@ -64,7 +64,7 @@ function Get-ZDUsers
             elseif ($OrganizationID)
             {
                 $params = @{
-                    Uri = ("https://$Domain.zendesk.com/api/v2/organizations/$OrganizationID/users.json?$RoleString").TrimEnd('&')
+                    Uri = ("https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrganizationID/users.json?$RoleString").TrimEnd('&')
                     Method = 'Get'
                     Headers = $Headers
                 }
@@ -72,7 +72,7 @@ function Get-ZDUsers
             else
             {
                 $params = @{
-                    Uri = ("https://$Domain.zendesk.com/api/v2/users.json?$RoleString").TrimEnd('&')
+                    Uri = ("https://$env:ZDDomain.zendesk.com/api/v2/users.json?$RoleString").TrimEnd('&')
                     Method = 'Get'
                     Headers = $Headers
                 }

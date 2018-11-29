@@ -40,22 +40,22 @@ function Get-ZDAllTickets
 
         if ($OrgID)
         {
-            $URI = "https://$Domain.zendesk.com/api/v2/organizations/$OrgID/tickets.json"
+            $URI = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrgID/tickets.json"
         }
 
         if ($UserID)
         {
             switch ($PSBoundParameters.Keys)
             {
-                'Requested' { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/requested.json" }
-                'CCD'       { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/ccd.json"       }
-                'Assigned'  { $URI = "https://$Domain.zendesk.com/api/v2/users/$UserID/tickets/assigned.json"  }
+                'Requested' { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/tickets/requested.json" }
+                'CCD'       { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/tickets/ccd.json"       }
+                'Assigned'  { $URI = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/tickets/assigned.json"  }
             }
         }
 
         if (($null -eq $UserID) -or ($null -eq $OrgID))
         {
-            $URI = "https://$Domain.zendesk.com/api/v2/tickets.json"
+            $URI = "https://$env:ZDDomain.zendesk.com/api/v2/tickets.json"
         }
 
         $params = @{

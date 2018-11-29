@@ -27,7 +27,7 @@ function Update-ZDOrganization
         Write-Verbose -Message 'Creating parameters from Update-ZDOrganization'
 
         $params = @{
-                Uri = "https://$Domain.zendesk.com/api/v2/organizations/$($OrganizationObject.id).json"
+                Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$($OrganizationObject.id).json"
                 Method = 'Put'
                 Body = $($TicketObject | ConvertTo-Json)
                 Headers = $Headers

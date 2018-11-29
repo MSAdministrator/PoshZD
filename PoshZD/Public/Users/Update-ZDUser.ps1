@@ -34,7 +34,7 @@ function Update-ZDUser
         if ($PSBoundParameters.ContainsKey('User'))
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/users/create_or_update.json"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/create_or_update.json"
                     Method = 'Post'
                     Headers = $Headers
                     Body = ($User | ConvertTo-Json)
@@ -44,7 +44,7 @@ function Update-ZDUser
         elseif ($PSBoundParameters.ContainsKey('UserID'))
         {
             $params = @{
-                    Uri = "https://$Domain.zendesk.com/api/v2/users/$UserID.json"
+                    Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                     Method = 'Put'
                     Headers = $Headers
                     Body = ($User | ConvertTo-Json)
