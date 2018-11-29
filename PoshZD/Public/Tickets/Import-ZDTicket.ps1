@@ -31,7 +31,7 @@ function Import-ZDTicket
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/imports/tickets.json"
             Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
     }

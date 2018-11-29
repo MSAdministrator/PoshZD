@@ -43,7 +43,7 @@ function Get-ZDSLAPolicies
             $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/slas/policies"
                 Method = 'Get'
-                Headers = $Headers            
+                Headers = $ZDHeaders            
                 ContentType = 'application/json'
             }
         }
@@ -53,7 +53,7 @@ function Get-ZDSLAPolicies
             $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/slas/policies/$PolicyId"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
                 ContentType = 'application/json'
             }
         }

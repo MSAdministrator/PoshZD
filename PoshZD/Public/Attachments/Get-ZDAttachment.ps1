@@ -27,7 +27,7 @@ function Get-ZDAttachment
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/attachments/$AttachmentID.json"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
             }
     }
     Process

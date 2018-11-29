@@ -30,7 +30,7 @@ function New-ZDOrganization
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations.json"
             Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
         

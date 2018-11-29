@@ -32,7 +32,7 @@ function Get-ZDTicketFields
             $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/ticket_fields.json"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
             }
        }
        else
@@ -40,7 +40,7 @@ function Get-ZDTicketFields
             $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/ticket_fields/$Ticket.json"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
             }
        }
     }

@@ -29,7 +29,7 @@ function Get-ZDAuditEventsOnTicket
         $params = @{
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/audits.json"
             Method = 'Get'
-            Headers = $Headers
+            Headers = $ZDHeaders
         }
     }
     Process

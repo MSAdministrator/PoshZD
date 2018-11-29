@@ -27,7 +27,7 @@ function Show-ZDOrganization
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
         }
         
     }

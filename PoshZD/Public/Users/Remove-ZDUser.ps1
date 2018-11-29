@@ -28,7 +28,7 @@ function Remove-ZDUser
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                 Method = 'DELETE'
-                Headers = $Headers
+                Headers = $ZDHeaders
                 Body = ($User | ConvertTo-Json)
                 ContentType = 'application/json'
         }

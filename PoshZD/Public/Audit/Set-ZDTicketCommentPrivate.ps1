@@ -34,7 +34,7 @@ function Set-ZDTicketCommentPrivate
         $params = @{
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/audits/$AuditId/make_private.json"
             Method = 'Put'
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
     }

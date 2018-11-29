@@ -36,7 +36,7 @@ function Update-ZDUser
             $params = @{
                     Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/create_or_update.json"
                     Method = 'Post'
-                    Headers = $Headers
+                    Headers = $ZDHeaders
                     Body = ($User | ConvertTo-Json)
                     ContentType = 'application/json'
                 }
@@ -46,7 +46,7 @@ function Update-ZDUser
             $params = @{
                     Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                     Method = 'Put'
-                    Headers = $Headers
+                    Headers = $ZDHeaders
                     Body = ($User | ConvertTo-Json)
                     ContentType = 'application/json'
                 }

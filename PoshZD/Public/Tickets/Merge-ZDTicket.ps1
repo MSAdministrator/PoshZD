@@ -44,7 +44,7 @@ function Merge-ZDTicket
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$SourceTicket/merge.json"
             Method = 'Post'
             Body = $($TicketObject | ConvertTo-Json)
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
     }

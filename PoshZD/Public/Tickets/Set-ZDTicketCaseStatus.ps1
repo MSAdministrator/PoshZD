@@ -44,7 +44,7 @@ function Set-ZDTicketCaseStatus
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$Ticket.json"
             Method = 'Put'
             Body = $($BodyPost | ConvertTo-Json)
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
     }

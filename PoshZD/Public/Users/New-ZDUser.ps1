@@ -29,7 +29,7 @@ function New-ZDUser
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users.json"
                 Method = 'Post'
-                Headers = $Headers
+                Headers = $ZDHeaders
                 Body = ($User | ConvertTo-Json)
                 ContentType = 'application/json'
             }

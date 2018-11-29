@@ -28,7 +28,7 @@ function Remove-ZDOrganization
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$OrganizationID.json"
                 Method = 'DELETE'
-                Headers = $Headers
+                Headers = $ZDHeaders
         }
     }
     Process

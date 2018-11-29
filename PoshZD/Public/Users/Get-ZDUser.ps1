@@ -31,7 +31,7 @@ function Get-ZDUser
             $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID/related.json"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
             }
 
             $filter = 'user_related'
@@ -41,7 +41,7 @@ function Get-ZDUser
             $params = @{
                     Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/$UserID.json"
                     Method = 'Get'
-                    Headers = $Headers
+                    Headers = $ZDHeaders
                 }
                     
             $filter = 'user'

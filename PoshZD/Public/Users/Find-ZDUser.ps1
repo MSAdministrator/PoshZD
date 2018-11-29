@@ -34,7 +34,7 @@ function Find-ZDUser
             $params = @{
                     Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/search.json?query=$Name"
                     Method = 'Get'
-                    Headers = $Headers
+                    Headers = $ZDHeaders
                     Body = ($User | ConvertTo-Json)
             }
         }
@@ -43,7 +43,7 @@ function Find-ZDUser
             $params = @{
                     Uri = "https://$env:ZDDomain.zendesk.com/api/v2/users/search.json?query=$Email"
                     Method = 'Get'
-                    Headers = $Headers
+                    Headers = $ZDHeaders
                     Body = ($User | ConvertTo-Json)
             }
         }

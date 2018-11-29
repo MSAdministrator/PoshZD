@@ -27,7 +27,7 @@ function Find-ZDOrganizationByStartingValue
         $params = @{
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/autocomplete.json?name=$StartingValue"
                 Method = 'Get'
-                Headers = $Headers
+                Headers = $ZDHeaders
         }
         
     }

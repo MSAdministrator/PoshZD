@@ -26,7 +26,7 @@ function Search-ZDTicketsByTag
         $params = @{
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/search.json?query=$Query"
             Method = 'Get'
-            Headers = $Headers
+            Headers = $ZDHeaders
         }
        
     }

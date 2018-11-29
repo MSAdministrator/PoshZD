@@ -30,7 +30,7 @@ function Update-ZDOrganization
                 Uri = "https://$env:ZDDomain.zendesk.com/api/v2/organizations/$($OrganizationObject.id).json"
                 Method = 'Put'
                 Body = $($TicketObject | ConvertTo-Json)
-                Headers = $Headers
+                Headers = $ZDHeaders
                 ContentType = 'application/json'
             }
     }

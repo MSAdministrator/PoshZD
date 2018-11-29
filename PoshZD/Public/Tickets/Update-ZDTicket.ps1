@@ -35,7 +35,7 @@ function Update-ZDTicket
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketNumber.json"
             Method = 'Put'
             Body = $($TicketObject | ConvertTo-Json -Depth 6)
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
     }

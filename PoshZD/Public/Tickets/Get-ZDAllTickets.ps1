@@ -61,7 +61,7 @@ function Get-ZDAllTickets
         $params = @{
             Uri = $URI
             Method = 'Get'
-            Headers = $Headers
+            Headers = $ZDHeaders
         }
     }
     Process

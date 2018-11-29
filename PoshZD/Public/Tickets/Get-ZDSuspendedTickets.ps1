@@ -46,7 +46,7 @@ function Get-ZDSuspendedTickets
         $params = @{
             Uri = $URI
             Method = 'Get'
-            Headers = $Headers
+            Headers = $ZDHeaders
         }
     }
     Process

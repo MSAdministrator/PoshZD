@@ -100,7 +100,7 @@ function Get-ZDSatisfactionRatings
         $params = @{
             Uri = $URI
             Method = 'Get'
-            Headers = $Headers
+            Headers = $ZDHeaders
         }
 
         $Result = Invoke-RestMethod @params

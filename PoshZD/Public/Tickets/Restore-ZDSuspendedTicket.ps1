@@ -39,7 +39,7 @@ function Restore-ZDSuspendedTicket
         $params = @{
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/suspended_tickets/recover_many.json?ids=$($IDs -join ",")"
             Method = 'Put'
-            Headers = $Headers
+            Headers = $ZDHeaders
             ContentType = 'application/json'
         }
 
