@@ -32,6 +32,7 @@ function Get-ZDTicketComments
             Uri = "https://$env:ZDDomain.zendesk.com/api/v2/tickets/$TicketId/comments.json"
             Method = 'Get'
             Headers = $ZDHeaders
+            ContentType = "application/json"
         }
     }
     Process

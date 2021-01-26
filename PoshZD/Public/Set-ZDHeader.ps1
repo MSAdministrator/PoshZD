@@ -32,8 +32,12 @@ function Set-ZDHeader
     Process
     {
         Write-Verbose -Message 'Creating global HEADER variable for your ZenDesk Domain from Set-ZDHeader'
-
-        Set-Variable -Name ZDHeaders -Value @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($Email)/token:$($Token)"));} -Scope Global
+        
+        $headerValue = @{
+            Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($Email)/token:$($Token)"))
+            "accept"="application/json"
+        }
+        Set-Variable -Name ZDHeaders -Value $headerValue -Scope Global
 
     }
     End
